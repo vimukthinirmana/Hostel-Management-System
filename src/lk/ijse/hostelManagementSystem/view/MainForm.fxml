@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="720.0" prefWidth="1360.0" style="-fx-background-color: #cf07d6#cf07d6;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hostelManagementSystem.controller.MainFormController">
+   <children>
+      <Label layoutX="7.0" layoutY="3.0" prefHeight="35.0" prefWidth="230.0" text="Hostel Manage System" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Label>
+      <AnchorPane fx:id="mainPain" layoutX="122.0" layoutY="42.0" prefHeight="640.0" prefWidth="1224.0" style="-fx-background-color: white;" />
+      <JFXButton layoutX="14.0" layoutY="191.0" onAction="#studentBtnOnAction" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: blue; -fx-background-radius: 10;" text="student" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="13.0" layoutY="253.0" onAction="#roomBtnOnAction" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: blue; -fx-background-radius: 10;" text="room" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="15.0" layoutY="315.0" onAction="#usersBtnOnAction" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: blue; -fx-background-radius: 10;" text="users" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="13.0" layoutY="128.0" onAction="#reservationBtnOnAction" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: blue; -fx-background-radius: 10;" text="reseve" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="1174.0" layoutY="13.0" text="Date" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="1035.0" layoutY="14.0" text="Time" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="timeTxt" layoutX="1079.0" layoutY="14.0" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="dateTxt" layoutX="1225.0" layoutY="14.0" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

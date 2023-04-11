@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="560.0" prefWidth="820.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hostelManagementSystem.controller.AuthenticationController">
+   <children>
+      <Label layoutX="157.0" layoutY="3.0" prefHeight="61.0" prefWidth="517.0" text="Hostel Management System">
+         <font>
+            <Font name="System Bold" size="38.0" />
+         </font>
+      </Label>
+      <Pane layoutX="19.0" layoutY="87.0" prefHeight="414.0" prefWidth="780.0" style="-fx-background-color: white; -fx-background-radius: 15;">
+         <children>
+            <Label layoutX="25.0" layoutY="67.0" prefHeight="46.0" prefWidth="96.0" text="Name" textFill="#5834e7">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="23.0" layoutY="120.0" prefHeight="46.0" prefWidth="128.0" text="Password" textFill="#5834e7">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtName" layoutX="174.0" layoutY="68.0" prefHeight="35.0" prefWidth="259.0" promptText="enter name" style="-fx-background-radius: 10;" />
+            <JFXButton layoutX="345.0" layoutY="187.0" onAction="#loginBtnOnAction" prefHeight="20.0" prefWidth="80.0" style="-fx-background-color: #0053ee; -fx-background-radius: 10;" text="login" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <PasswordField fx:id="txtPassword" layoutX="174.0" layoutY="121.0" prefHeight="35.0" prefWidth="259.0" promptText="enter password" style="-fx-background-radius: 10;" />
+         </children>
+         <effect>
+            <DropShadow height="20.0" radius="9.5" width="20.0" />
+         </effect>
+      </Pane>
+      <Label layoutX="14.0" layoutY="521.0" prefHeight="26.0" prefWidth="72.0" text="v 0.0.1">
+         <font>
+            <Font name="System Italic" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
