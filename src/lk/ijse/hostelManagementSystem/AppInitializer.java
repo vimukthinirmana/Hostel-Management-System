@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.net.URL;
 
 public class AppInitializer extends Application {
+    public static Stage stage=new Stage();
 
     public static void main(String[] args) {
         launch(args);
@@ -20,10 +21,11 @@ public class AppInitializer extends Application {
         URL resource = this.getClass().getResource("/lk/ijse/hostelManagementSystem/view/Authentication.fxml");
         Parent window = FXMLLoader.load(resource);
         Scene scene = new Scene(window);
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Authentication");
-        primaryStage.centerOnScreen();
+        primaryStage = stage;
+        stage.setScene(scene);
+        stage.setTitle("Authentication");
+        stage.centerOnScreen();
 
-        primaryStage.show();
+        stage.show();
     }
 }

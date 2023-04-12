@@ -3,9 +3,21 @@ package lk.ijse.hostelManagementSystem.controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import lk.ijse.hostelManagementSystem.AppInitializer;
+import lk.ijse.hostelManagementSystem.util.Navigation;
+import lk.ijse.hostelManagementSystem.util.Routes;
+
+import java.io.IOException;
+
+import static lk.ijse.hostelManagementSystem.AppInitializer.stage;
 
 public class AuthenticationController {
 
@@ -46,13 +58,23 @@ public class AuthenticationController {
 
 
     public JFXButton signInbtn1ID;
+    public AnchorPane authenticationPaneID;
 
-
-    
 
     @FXML
-    void signInBtn1nAction(ActionEvent event) {
+    void signInBtn1nAction(ActionEvent event) throws IOException {
+//user login dashboard
 
+        stage.close();
+
+        stage=new Stage();
+        Parent window = FXMLLoader.load(this.getClass().getResource("/lk/ijse/hostelManagementSystem/view/Dashboard.fxml"));
+        Scene scene = new Scene(window);
+        stage.setScene(scene);
+        stage.setTitle("Login Form");
+//        stage.setFullScreen(true);
+//        stage.setFullScreenExitHint("");
+        stage.show();
     }
 
 
@@ -69,6 +91,8 @@ public class AuthenticationController {
         signInbtn2ID.setVisible(true);
         signinpaneID.setVisible(true);
         signupbtn2ID.setVisible(true);
+        //new user details input database
+
     }
 
 

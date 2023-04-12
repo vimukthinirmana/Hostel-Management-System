@@ -21,7 +21,7 @@ public class Navigation {
                 break;
             case DASHBOARD:
                 window.setTitle("Dashboard");
-                initUI("MainForm.fxml");
+                initUI("Dashboard.fxml");
                 break;
             case STUDENT:
                 window.setTitle("Student Manage");
