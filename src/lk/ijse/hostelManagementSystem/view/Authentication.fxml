@@ -3,51 +3,119 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="560.0" prefWidth="820.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hostelManagementSystem.controller.AuthenticationController">
+<AnchorPane prefHeight="560.0" prefWidth="820.0" style="-fx-background-color: blue;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hostelManagementSystem.controller.AuthenticationController">
    <children>
-      <Label layoutX="157.0" layoutY="3.0" prefHeight="61.0" prefWidth="517.0" text="Hostel Management System">
-         <font>
-            <Font name="System Bold" size="38.0" />
-         </font>
-      </Label>
-      <Pane layoutX="19.0" layoutY="87.0" prefHeight="414.0" prefWidth="780.0" style="-fx-background-color: white; -fx-background-radius: 15;">
+      <Pane prefHeight="560.0" prefWidth="410.0" style="-fx-background-color: white;">
          <children>
-            <Label layoutX="25.0" layoutY="67.0" prefHeight="46.0" prefWidth="96.0" text="Name" textFill="#5834e7">
+            <ImageView fitHeight="230.0" fitWidth="408.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/SharedScreenshot.jpg" />
+               </image>
+            </ImageView>
+            <Label layoutX="119.0" layoutY="20.0" prefHeight="66.0" prefWidth="178.0" text="The D24" textFill="#9473eb">
                <font>
-                  <Font size="25.0" />
+                  <Font name="Cambria Bold" size="45.0" />
                </font>
             </Label>
-            <Label layoutX="23.0" layoutY="120.0" prefHeight="46.0" prefWidth="128.0" text="Password" textFill="#5834e7">
+            <JFXButton fx:id="signupbtn2ID" layoutX="48.0" layoutY="362.0" onAction="#signupBtn2Action" prefHeight="49.0" prefWidth="133.0" style="-fx-background-color: #3791ff; -fx-background-radius: 20;" text="SIGN UP" textFill="#fcfcfc">
                <font>
-                  <Font size="25.0" />
-               </font>
-            </Label>
-            <TextField fx:id="txtName" layoutX="174.0" layoutY="68.0" prefHeight="35.0" prefWidth="259.0" promptText="enter name" style="-fx-background-radius: 10;" />
-            <JFXButton layoutX="345.0" layoutY="187.0" onAction="#loginBtnOnAction" prefHeight="20.0" prefWidth="80.0" style="-fx-background-color: #0053ee; -fx-background-radius: 10;" text="login" textFill="WHITE">
-               <font>
-                  <Font size="20.0" />
+                  <Font size="23.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <PasswordField fx:id="txtPassword" layoutX="174.0" layoutY="121.0" prefHeight="35.0" prefWidth="259.0" promptText="enter password" style="-fx-background-radius: 10;" />
+            <JFXButton fx:id="signInbtn2ID" layoutX="233.0" layoutY="363.0" onAction="#signInBtn2Action" prefHeight="49.0" prefWidth="133.0" style="-fx-background-color: #3791ff; -fx-background-radius: 20;" text="SIGN IN" textFill="#fcfcfc">
+               <font>
+                  <Font size="23.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
          </children>
-         <effect>
-            <DropShadow height="20.0" radius="9.5" width="20.0" />
-         </effect>
       </Pane>
-      <Label layoutX="14.0" layoutY="521.0" prefHeight="26.0" prefWidth="72.0" text="v 0.0.1">
-         <font>
-            <Font name="System Italic" size="18.0" />
-         </font>
-      </Label>
+      <Pane fx:id="signupPane" layoutX="477.0" layoutY="79.0" prefHeight="560.0" prefWidth="410.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="410.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="96.0" layoutY="4.0" prefHeight="49.0" prefWidth="220.0" text="Enter User Details" textFill="#20beee">
+               <font>
+                  <Font name="System Bold Italic" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="140.0" prefHeight="37.0" prefWidth="100.0" text="Name :">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="13.0" layoutY="199.0" prefHeight="37.0" prefWidth="108.0" text="User name :">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="15.0" layoutY="260.0" prefHeight="37.0" prefWidth="100.0" text="Password :">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="signupBtn1ID" layoutX="144.0" layoutY="390.0" onAction="#signUpBtn1Action" prefHeight="49.0" prefWidth="133.0" style="-fx-background-color: #3791ff; -fx-background-radius: 20;" text="SIGN UP" textFill="#fcfcfc">
+               <font>
+                  <Font size="23.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <TextField fx:id="txtName" layoutX="137.0" layoutY="139.0" prefHeight="37.0" prefWidth="225.0" />
+            <TextField fx:id="txtUserName" layoutX="138.0" layoutY="199.0" prefHeight="37.0" prefWidth="225.0" />
+            <TextField fx:id="txtPassword" layoutX="139.0" layoutY="261.0" prefHeight="37.0" prefWidth="225.0" />
+            <Label layoutX="15.0" layoutY="82.0" prefHeight="37.0" prefWidth="100.0" text="User ID :">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblUserId" layoutX="139.0" layoutY="80.0" prefHeight="37.0" prefWidth="220.0" text="User ID :">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="15.0" layoutY="314.0" prefHeight="37.0" prefWidth="121.0" text="Contact No :">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtContactNo" layoutX="140.0" layoutY="315.0" prefHeight="37.0" prefWidth="224.0" />
+         </children>
+      </Pane>
+      <Pane fx:id="signinpaneID" layoutX="410.0" prefHeight="560.0" prefWidth="410.0" style="-fx-background-color: white;">
+         <children>
+            <Label layoutX="8.0" layoutY="142.0" prefHeight="30.0" prefWidth="122.0" text="User Name :">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="191.0" prefHeight="30.0" prefWidth="122.0" text="Password :">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtusernameSignInID" layoutX="135.0" layoutY="136.0" prefHeight="37.0" prefWidth="212.0" promptText="user name" />
+            <TextField fx:id="txtPasswordSignInID" layoutX="136.0" layoutY="189.0" prefHeight="37.0" prefWidth="212.0" promptText="password" />
+            <JFXButton fx:id="signInbtn1ID" layoutX="133.0" layoutY="271.0" onAction="#signInBtn1nAction" prefHeight="49.0" prefWidth="133.0" style="-fx-background-color: #3791ff; -fx-background-radius: 20;" text="SIGN IN" textFill="#fcfcfc">
+               <font>
+                  <Font size="23.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
