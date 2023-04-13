@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.net.URL;
 
 public class AppInitializer extends Application {
-    public static Stage stage=new Stage();
+    public static Stage stage = new Stage();
 
     public static void main(String[] args) {
         launch(args);

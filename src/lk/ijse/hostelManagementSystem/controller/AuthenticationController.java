@@ -11,9 +11,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import lk.ijse.hostelManagementSystem.AppInitializer;
-import lk.ijse.hostelManagementSystem.util.Navigation;
-import lk.ijse.hostelManagementSystem.util.Routes;
 
 import java.io.IOException;
 
@@ -71,7 +68,7 @@ public class AuthenticationController {
         Parent window = FXMLLoader.load(this.getClass().getResource("/lk/ijse/hostelManagementSystem/view/Dashboard.fxml"));
         Scene scene = new Scene(window);
         stage.setScene(scene);
-        stage.setTitle("Login Form");
+        stage.setTitle("Dashboard");
 //        stage.setFullScreen(true);
 //        stage.setFullScreenExitHint("");
         stage.show();
