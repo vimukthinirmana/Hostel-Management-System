@@ -8,18 +8,28 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import java.util.Properties;
+
 public class SessionFactoryConfiguration {
     private static SessionFactoryConfiguration sessionFactoryConfiguration;
     private SessionFactory sessionFactory;
 
     private SessionFactoryConfiguration(){
-        Configuration configuration = new Configuration().configure()
-                .addAnnotatedClass(Reservation.class)
-                .addAnnotatedClass(Student.class)
-                .addAnnotatedClass(Room.class)
-                .addAnnotatedClass(User.class);
+        Properties properties = new Properties();
 
-        sessionFactory = configuration.buildSessionFactory();
+        try{
+            properties.load(ClassLoader.getSystemClassLoader().getResourceAsStream("hibernate.properties"));
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        Configuration configuration = new Configuration();//.configure()
+        configuration .addAnnotatedClass(Reservation.class);
+        configuration .addAnnotatedClass(Student.class);
+        configuration .addAnnotatedClass(Room.class);
+        configuration .addAnnotatedClass(User.class);
+
+        sessionFactory = configuration.mergeProperties(properties).buildSessionFactory();
     }
     public static SessionFactoryConfiguration getInstance(){
         return (sessionFactoryConfiguration == null) ? sessionFactoryConfiguration = new SessionFactoryConfiguration()

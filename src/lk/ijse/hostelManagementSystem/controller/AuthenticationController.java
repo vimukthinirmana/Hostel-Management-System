@@ -6,13 +6,24 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import lk.ijse.hostelManagementSystem.entity.User;
+import lk.ijse.hostelManagementSystem.repository.UserRepository;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import static lk.ijse.hostelManagementSystem.AppInitializer.stage;
 
@@ -59,7 +70,9 @@ public class AuthenticationController {
     public Label signInConfarmationlbl;
     public Label signupConfarmationlbl;
 
-    private static int nextId = 1;//
+
+
+    private UserRepository userRepository = new UserRepository();
 
     @FXML
     void signInBtn1nAction(ActionEvent event) throws IOException {
@@ -90,7 +103,6 @@ public class AuthenticationController {
     void signUpBtn1Action(ActionEvent event) {
         //new user details input database
         boolean isValidate = checkValidation();
-        lblUserId.setText(generateId());
 
         if(isValidate){
             signInbtn2ID.setVisible(true);
@@ -103,6 +115,25 @@ public class AuthenticationController {
             String contactNo = txtContactNo.getText();
             String password = txtPassword.getText();
 
+            try {
+                boolean isAdded = userRepository.addUser(
+                        new User(
+                                userId,
+                                name,
+                                userName,
+                                password,
+                                contactNo
+                        )
+                );
+
+                if (isAdded) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "User SignUp!").show();
+                } else {
+                    new Alert(Alert.AlertType.WARNING, "Something happened!").show();
+                }
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
 
 
         }else {
@@ -120,7 +151,12 @@ public class AuthenticationController {
         signinpaneID.setVisible(false);
         signupPane.setVisible(true);
         signInbtn2ID.setVisible(true);
+        setGeneratedUserId();
 
+    }
+    public void setGeneratedUserId() {
+        String generatedUserId = userRepository.generateUserId();
+        lblUserId.setText(generatedUserId);
     }
 
     private boolean checkValidation(){
@@ -153,13 +189,6 @@ public class AuthenticationController {
     }
 
 
-
-
-        public static synchronized String generateId() {
-            String id = String.format("user-%03d", nextId);
-            nextId++;
-            return id;
-        }
 
 
 
