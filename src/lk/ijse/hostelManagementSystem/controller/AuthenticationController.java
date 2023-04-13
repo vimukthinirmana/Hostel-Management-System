@@ -56,7 +56,10 @@ public class AuthenticationController {
 
     public JFXButton signInbtn1ID;
     public AnchorPane authenticationPaneID;
+    public Label signInConfarmationlbl;
+    public Label signupConfarmationlbl;
 
+    private static int nextId = 1;//
 
     @FXML
     void signInBtn1nAction(ActionEvent event) throws IOException {
@@ -85,21 +88,79 @@ public class AuthenticationController {
 
     @FXML
     void signUpBtn1Action(ActionEvent event) {
-        signInbtn2ID.setVisible(true);
-        signinpaneID.setVisible(true);
-        signupbtn2ID.setVisible(true);
         //new user details input database
+        boolean isValidate = checkValidation();
+        lblUserId.setText(generateId());
+
+        if(isValidate){
+            signInbtn2ID.setVisible(true);
+            signinpaneID.setVisible(true);
+            signupbtn2ID.setVisible(true);
+
+            String userId =lblUserId.getText();
+            String name=txtName.getText();
+            String userName=txtUserName.getText();
+            String contactNo = txtContactNo.getText();
+            String password = txtPassword.getText();
+
+
+
+        }else {
+            signupConfarmationlbl.setText("please check your details");
+
+        }
 
     }
 
 
     @FXML
     void signupBtn2Action(ActionEvent event) {
+        clearFields();
         signupbtn2ID.setVisible(false);
         signinpaneID.setVisible(false);
         signupPane.setVisible(true);
         signInbtn2ID.setVisible(true);
 
     }
+
+    private boolean checkValidation(){
+
+        String name=txtName.getText();
+        String userName=txtUserName.getText();
+        String contactNo = txtContactNo.getText();
+        String password = txtPassword.getText();
+
+        if (!name.matches("[A-Za-z ]+")) {
+            txtName.requestFocus();
+            return false;
+        } else if (!userName.matches("[A-Za-z ]+")) {
+            txtUserName.requestFocus();
+            return false;
+        } else if (!contactNo.matches(".*(?:7|0|(?:\\\\\\\\+94))[0-9]{9,10}")) {
+            txtContactNo.requestFocus();
+            return false;
+        } else if (!password.matches("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")) {
+            txtPassword.requestFocus();
+        }
+        return true;
+    }
+    private void clearFields(){
+        txtName.clear();
+        txtUserName.clear();
+        txtContactNo.clear();
+        txtPassword.clear();
+        signupConfarmationlbl.setText("");
+    }
+
+
+
+
+        public static synchronized String generateId() {
+            String id = String.format("user-%03d", nextId);
+            nextId++;
+            return id;
+        }
+
+
 
 }

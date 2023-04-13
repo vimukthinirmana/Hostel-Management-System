@@ -94,6 +94,7 @@
                </font>
             </Label>
             <TextField fx:id="txtContactNo" layoutX="140.0" layoutY="315.0" prefHeight="37.0" prefWidth="224.0" style="-fx-background-radius: 10;" />
+            <Label fx:id="signupConfarmationlbl" layoutX="200.0" layoutY="370.0" prefHeight="17.0" prefWidth="169.0" textFill="RED" />
          </children>
          <effect>
             <InnerShadow color="#9d9d9d" height="25.0" radius="12.0" width="25.0" />
@@ -121,6 +122,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
+            <Label fx:id="signInConfarmationlbl" layoutX="198.0" layoutY="242.0" prefHeight="17.0" prefWidth="169.0" textFill="RED" />
          </children>
          <effect>
             <InnerShadow color="#9d9d9d" height="25.0" radius="12.0" width="25.0" />

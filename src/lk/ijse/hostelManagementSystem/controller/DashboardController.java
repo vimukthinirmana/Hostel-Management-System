@@ -18,6 +18,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
+import static lk.ijse.hostelManagementSystem.AppInitializer.stage;
+
 public class DashboardController {
     public AnchorPane mainPain;
     public Label dateTxt;
@@ -49,7 +51,7 @@ public class DashboardController {
     }
 
     public void logoutBtnOnAction(ActionEvent actionEvent) throws IOException {
-        Navigation.stage.close();
+        stage.close();
 
         Stage stage=new Stage();
         Parent window = FXMLLoader.load(this.getClass().getResource("/lk/ijse/hostelManagementSystem/view/Authentication.fxml"));

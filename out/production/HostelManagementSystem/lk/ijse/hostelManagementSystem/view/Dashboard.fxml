@@ -1,37 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1360.0" style="-fx-background-color: #cf07d6#cf07d6;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hostelManagementSystem.controller.DashboardController">
+<AnchorPane prefHeight="720.0" prefWidth="1360.0" style="-fx-background-color: #2e2e2e;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hostelManagementSystem.controller.DashboardController">
    <children>
-      <Label layoutX="7.0" layoutY="3.0" prefHeight="35.0" prefWidth="154.0" text="The D24 Hostel" textFill="WHITE">
+      <Label layoutX="26.0" layoutY="11.0" prefHeight="35.0" prefWidth="87.0" text="The D24 " textFill="#c8a4ff">
          <font>
-            <Font name="System Bold Italic" size="20.0" />
+            <Font name="Arial Rounded MT Bold" size="20.0" />
          </font>
       </Label>
-      <AnchorPane fx:id="mainPain" layoutX="126.0" layoutY="48.0" prefHeight="660.0" prefWidth="1224.0" style="-fx-background-color: white;" />
-      <JFXButton layoutX="14.0" layoutY="191.0" onAction="#studentBtnOnAction" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: blue; -fx-background-radius: 20;" text="student" textFill="WHITE" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="1250.0" AnchorPane.topAnchor="128.0">
+      <AnchorPane fx:id="mainPain" layoutX="126.0" layoutY="48.0" prefHeight="650.0" prefWidth="1224.0" style="-fx-background-color: white;" />
+      <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="135.0" onAction="#studentBtnOnAction" prefHeight="35.0" prefWidth="110.0" ripplerFill="WHITE" style="-fx-background-color: blue; -fx-background-radius: 20;" text="student" textFill="WHITE" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="1250.0">
          <font>
             <Font size="18.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
-      <JFXButton layoutX="13.0" layoutY="253.0" onAction="#roomBtnOnAction" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: blue; -fx-background-radius: 20;" text="room" textFill="WHITE" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="1250.0" AnchorPane.topAnchor="180.0">
+      <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="187.0" onAction="#roomBtnOnAction" prefHeight="35.0" prefWidth="110.0" ripplerFill="WHITE" style="-fx-background-color: blue; -fx-background-radius: 20;" text="room" textFill="WHITE" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="1250.0">
          <font>
             <Font size="18.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
-      <JFXButton layoutX="15.0" layoutY="315.0" onAction="#logoutBtnOnAction" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: blue; -fx-background-radius: 20;" text="log out" textFill="WHITE" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="1250.0" AnchorPane.topAnchor="280.0">
+      <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="287.0" onAction="#logoutBtnOnAction" prefHeight="35.0" prefWidth="110.0" ripplerFill="WHITE" style="-fx-background-color: blue; -fx-background-radius: 20;" text="log out" textFill="WHITE" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="1250.0">
          <font>
             <Font size="18.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
-      <JFXButton layoutX="18.0" layoutY="364.0" onAction="#reservationBtnOnAction" prefHeight="39.0" prefWidth="103.0" style="-fx-background-color: blue; -fx-background-radius: 20;" text="reseve" textFill="WHITE" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="1247.0" AnchorPane.topAnchor="230.0">
+      <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="237.0" onAction="#reservationBtnOnAction" prefHeight="39.0" prefWidth="103.0" ripplerFill="WHITE" style="-fx-background-color: blue; -fx-background-radius: 20;" text="reseve" textFill="WHITE" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="1247.0">
          <font>
             <Font size="18.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <Label layoutX="1174.0" layoutY="13.0" text="Date" textFill="WHITE">
          <font>
@@ -53,5 +68,10 @@
             <Font size="15.0" />
          </font>
       </Label>
+      <ImageView fitHeight="110.0" fitWidth="115.0" layoutX="6.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/2removebgpreview.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
