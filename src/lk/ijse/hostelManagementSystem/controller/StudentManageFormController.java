@@ -40,6 +40,8 @@ public class StudentManageFormController implements Initializable {
     public void initialize() {
         initUI();
         setCmbGender();
+        initialize();
+        loadAllDate();
 
     }
 
@@ -53,6 +55,7 @@ public class StudentManageFormController implements Initializable {
         txtContactNo.setDisable(true);
         txtAge.setDisable(true);
         cbxGender.setDisable(true);
+        studentTableView.setDisable(true);
 
         saveBtnId.setDisable(true);
         deleteBtnId.setDisable(true);
@@ -91,7 +94,9 @@ public class StudentManageFormController implements Initializable {
 
                 if (isAdded) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Student Added!").show();
-                    initialize();
+                    clearFiled();
+                    loadAllDate();
+
                 } else {
                     new Alert(Alert.AlertType.WARNING, "Something happened!").show();
                 }
@@ -107,10 +112,22 @@ public class StudentManageFormController implements Initializable {
     }
 
     public void deleteBtnOnAction(ActionEvent actionEvent) {
+        Object selectedStudent = studentTableView.getSelectionModel().getSelectedItem();
+        if (selectedStudent != null) {
+            boolean deleted = studentRepository.deleteStudent(selectedStudent);
+            if (deleted) {
+                studentTableView.getItems().remove(selectedStudent);
+            } else {
+                System.out.println("not deleted");
+            }
+        } else {
+            System.out.println("select error");
+        }
     }
 
     public void clearBtnOnAction(ActionEvent actionEvent) {
         clearFiled();
+
     }
 
 
@@ -118,10 +135,12 @@ public class StudentManageFormController implements Initializable {
     public void addStudentBtnOnAction(ActionEvent actionEvent) {
         lblStudentID.setDisable(false);
         txtName.setDisable(false);
+        txtName.requestFocus();
         txtAddress.setDisable(false);
         txtContactNo.setDisable(false);
         txtAge.setDisable(false);
         cbxGender.setDisable(false);
+        studentTableView.setDisable(false);
 
         saveBtnId.setDisable(false);
         deleteBtnId.setDisable(false);
@@ -169,6 +188,7 @@ public class StudentManageFormController implements Initializable {
     }
 
     private void clearFiled() {
+        lblStudentID.setText("");
         txtName.clear();
         txtAddress.clear();
         txtContactNo.clear();
@@ -181,6 +201,7 @@ public class StudentManageFormController implements Initializable {
         lblStudentID.setText(generatedStudentId);
     }
 
+    @Override
     public void initialize(URL location, ResourceBundle resources) {
         colStudentID.setCellValueFactory(new PropertyValueFactory<>("sId"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -189,7 +210,13 @@ public class StudentManageFormController implements Initializable {
         colAge.setCellValueFactory(new PropertyValueFactory<>("age"));
         colGender.setCellValueFactory(new PropertyValueFactory<>("gender"));
 
+        // Load data from the selected row into the labels, text fields, and combo box
+        studentTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            loadSelectedRowData();
+        });
+
         loadAllDate();
+        setCmbGender();
     }
 
     private void loadAllDate(){
@@ -198,6 +225,30 @@ public class StudentManageFormController implements Initializable {
         ObservableList observableList= FXCollections.observableArrayList(students);
         studentTableView.setItems(observableList);
     }
+
+
+    public void loadSelectedRowData() {
+        // Get the selected row from the table
+        Object selectedRow = studentTableView.getSelectionModel().getSelectedItem();
+
+        // Cast the selected row to Student type
+        if(selectedRow instanceof Student) {
+            Student selectedStudent = (Student) selectedRow;
+
+            // Load data from the selected row into the labels, text fields, and combo box
+            lblStudentID.setText(selectedStudent.getSId());
+            txtName.setText(selectedStudent.getName());
+            txtAddress.setText(selectedStudent.getAddress());
+            txtContactNo.setText(selectedStudent.getContactNo());
+            cbxGender.getSelectionModel().select(selectedStudent.getGender());
+            txtAge.setText(String.valueOf(selectedStudent.getAge()));
+        }
+    }
+
+
+
+
+
 
 
 }

@@ -1,7 +1,6 @@
 package lk.ijse.hostelManagementSystem.repository;
 
 import lk.ijse.hostelManagementSystem.entity.Student;
-import lk.ijse.hostelManagementSystem.entity.User;
 import lk.ijse.hostelManagementSystem.util.SessionFactoryConfiguration;
 import lombok.NoArgsConstructor;
 import org.hibernate.Criteria;
@@ -30,6 +29,25 @@ public class StudentRepository {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public boolean deleteStudent(Object student) {
+        Transaction transaction = null;
+        boolean deleted = false;
+        try {
+            transaction = session.beginTransaction();
+            session.delete(student);
+            transaction.commit();
+            deleted = true;
+        } catch (HibernateException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return deleted;
     }
 
 
