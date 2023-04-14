@@ -25,6 +25,8 @@ public class DashboardController {
     public Label dateTxt;
     public Label timeTxt;
 
+
+
     public void studentBtnOnAction(ActionEvent actionEvent) throws IOException {
         Navigation.navigate(Navigation.Routes.STUDENT,mainPain);
     }
@@ -39,6 +41,7 @@ public class DashboardController {
     }
 
     public void initialize(){
+
         LocalDate date = LocalDate.now();
         dateTxt.setText(String.valueOf(date));
 

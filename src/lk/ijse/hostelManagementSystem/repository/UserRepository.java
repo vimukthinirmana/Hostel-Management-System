@@ -5,6 +5,7 @@ import lk.ijse.hostelManagementSystem.entity.User;
 import lk.ijse.hostelManagementSystem.util.SessionFactoryConfiguration;
 import org.hibernate.*;
 import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 
 
 public class UserRepository {
@@ -61,6 +62,36 @@ public class UserRepository {
         }
         return userId;
     }
+
+
+    public boolean validateUser(String userName, String password) {
+        Session session3= SessionFactoryConfiguration.getInstance().getSession();
+        Transaction transaction3 = null;
+        boolean isValidUser = false;
+        try {
+            transaction3 = session3.beginTransaction();
+
+            // Check if a row exists with the given username and password
+            Criteria criteria = session3.createCriteria(User.class);
+            criteria.add(Restrictions.eq("userName", userName));
+            criteria.add(Restrictions.eq("password", password));
+            criteria.setProjection(Projections.rowCount());
+            Long rowCount = (Long) criteria.uniqueResult();
+            if (rowCount > 0) {
+                isValidUser = true;
+            }
+
+            transaction3.commit();
+        } catch (HibernateException e) {
+            if (transaction3 != null) transaction3.rollback();
+            e.printStackTrace();
+        } finally {
+            session3.close();
+        }
+        return isValidUser;
+    }
+
+
 
 
 

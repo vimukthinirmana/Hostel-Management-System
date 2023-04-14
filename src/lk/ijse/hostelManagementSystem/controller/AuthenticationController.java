@@ -77,17 +77,27 @@ public class AuthenticationController {
     @FXML
     void signInBtn1nAction(ActionEvent event) throws IOException {
 //user login dashboard
+        boolean isValidUser = true;
+        String userNameValidate = txtusernameSignInID.getText();
+        String userPasswordValidate = txtPasswordSignInID.getText();
 
-        stage.close();
+        if (userRepository.validateUser(userNameValidate,userPasswordValidate)== true){
+            stage.close();
 
-        stage=new Stage();
-        Parent window = FXMLLoader.load(this.getClass().getResource("/lk/ijse/hostelManagementSystem/view/Dashboard.fxml"));
-        Scene scene = new Scene(window);
-        stage.setScene(scene);
-        stage.setTitle("Dashboard");
+            stage=new Stage();
+            Parent window = FXMLLoader.load(this.getClass().getResource("/lk/ijse/hostelManagementSystem/view/Dashboard.fxml"));
+            Scene scene = new Scene(window);
+            stage.setScene(scene);
+            stage.setTitle("Dashboard");
 //        stage.setFullScreen(true);
 //        stage.setFullScreenExitHint("");
-        stage.show();
+            stage.show();
+        }else{
+            txtusernameSignInID.setStyle("-fx-text-box-border:red;-fx-focus-color:red;");
+            txtPasswordSignInID.setStyle("-fx-text-box-border:red;-fx-focus-color:red;");
+            signInConfarmationlbl.setText("Invalid input");
+        }
+
     }
 
 

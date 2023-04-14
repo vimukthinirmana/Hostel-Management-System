@@ -19,8 +19,18 @@ public class Student {
     private String address;
     private String contactNo;
     private String gender;
-    private int age;
+    private String age;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "student")
     private List<Reservation> reservationList;
+
+
+    public Student(String sId, String name, String address, String contactNo, String gender, String age) {
+        this.sId = sId;
+        this.name = name;
+        this.address = address;
+        this.contactNo = contactNo;
+        this.gender = gender;
+        this.age = age;
+    }
 }
