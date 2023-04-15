@@ -103,4 +103,18 @@ public class StudentRepository {
     }
 
 
+    public boolean updateStudent(Student student) {
+        Session session3= SessionFactoryConfiguration.getInstance().getSession();
+        Transaction transaction3 = session3.beginTransaction();
+        try {
+            session3.update(student);
+            transaction3.commit();
+            session3.close();
+            return true;
+        }catch (Exception e){
+            transaction3.rollback();
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

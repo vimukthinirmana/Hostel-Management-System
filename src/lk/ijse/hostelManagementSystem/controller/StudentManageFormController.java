@@ -34,6 +34,7 @@ public class StudentManageFormController implements Initializable {
     public JFXButton deleteBtnId;
     public JFXButton clearBtnId;
     public JFXButton canselBtnId;
+    public JFXButton updateBtnId;
 
     private StudentRepository studentRepository = new StudentRepository();
 
@@ -59,6 +60,7 @@ public class StudentManageFormController implements Initializable {
 
         saveBtnId.setDisable(true);
         deleteBtnId.setDisable(true);
+        updateBtnId.setDisable(true);
         canselBtnId.setDisable(true);
         clearBtnId.setDisable(true);
 
@@ -144,6 +146,7 @@ public class StudentManageFormController implements Initializable {
 
         saveBtnId.setDisable(false);
         deleteBtnId.setDisable(false);
+        updateBtnId.setDisable(false);
         canselBtnId.setDisable(false);
         clearBtnId.setDisable(false);
 
@@ -246,9 +249,48 @@ public class StudentManageFormController implements Initializable {
     }
 
 
+    public void updateBtnOnAction(ActionEvent actionEvent) {
+        boolean isValidate = checkValidation();
+        if (isValidate) {
 
 
+            String sId = lblStudentID.getText();
+            String name = txtName.getText();
+            String address = txtAddress.getText();
+            String contactNo = txtContactNo.getText();
+            String gender = cbxGender.getSelectionModel().getSelectedItem();
+            String age = txtAge.getText();
 
 
+            try {
+                boolean isUpdated = studentRepository.updateStudent(
+                        new Student(
+                                sId,
+                                name,
+                                address,
+                                contactNo,
+                                gender,
+                                age
 
+                        )
+                );
+
+                if (isUpdated) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Student Updated!").show();
+                    clearFiled();
+                    loadAllDate();
+
+                } else {
+                    new Alert(Alert.AlertType.WARNING, "Something happened!").show();
+                }
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+
+
+        } else {
+            new Alert(Alert.AlertType.WARNING, "please check your details").show();
+
+        }
+    }
 }

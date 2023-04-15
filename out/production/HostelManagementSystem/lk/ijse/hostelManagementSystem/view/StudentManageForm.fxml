@@ -67,25 +67,25 @@
                </font>
             </Label>
             <TextField fx:id="txtContactNo" layoutX="661.0" layoutY="68.0" prefHeight="32.0" />
-            <JFXButton fx:id="saveBtnId" layoutX="886.0" layoutY="103.0" onAction="#saveBtnOnAction" prefHeight="39.0" prefWidth="85.0" style="-fx-background-color: green; -fx-background-radius: 15;" text="Save" textFill="WHITE">
+            <JFXButton fx:id="saveBtnId" layoutX="863.0" layoutY="103.0" onAction="#saveBtnOnAction" prefHeight="39.0" prefWidth="70.0" style="-fx-background-color: green; -fx-background-radius: 15;" text="Save" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font size="15.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <JFXButton fx:id="deleteBtnId" layoutX="977.0" layoutY="103.0" onAction="#deleteBtnOnAction" prefHeight="39.0" prefWidth="85.0" style="-fx-background-color: red; -fx-background-radius: 15;" text="Delete" textFill="WHITE">
+            <JFXButton fx:id="deleteBtnId" layoutX="1019.0" layoutY="103.0" onAction="#deleteBtnOnAction" prefHeight="39.0" prefWidth="70.0" style="-fx-background-color: red; -fx-background-radius: 15;" text="Delete" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font size="15.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <JFXButton fx:id="clearBtnId" layoutX="1068.0" layoutY="105.0" onAction="#clearBtnOnAction" prefHeight="39.0" prefWidth="85.0" style="-fx-background-color: yellow; -fx-background-radius: 15;" text="Clear" textFill="WHITE">
+            <JFXButton fx:id="clearBtnId" layoutX="1098.0" layoutY="105.0" onAction="#clearBtnOnAction" prefHeight="39.0" prefWidth="70.0" style="-fx-background-color: yellow; -fx-background-radius: 15;" text="Clear" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font size="15.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -102,6 +102,14 @@
               </columns>
             </TableView>
             <ComboBox fx:id="cbxGender" layoutX="94.0" layoutY="73.0" prefHeight="32.0" prefWidth="114.0" promptText="select gender" />
+            <JFXButton fx:id="updateBtnId" layoutX="940.0" layoutY="103.0" onAction="#updateBtnOnAction" prefHeight="39.0" prefWidth="70.0" style="-fx-background-color: orange; -fx-background-radius: 15;" text="Update" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
          </children>
       </Pane>
       <JFXButton buttonType="RAISED" layoutX="22.0" layoutY="7.0" onAction="#addStudentBtnOnAction" prefHeight="39.0" prefWidth="133.0" style="-fx-background-color: blue; -fx-background-radius: 15;" text="Add Student" textFill="WHITE">

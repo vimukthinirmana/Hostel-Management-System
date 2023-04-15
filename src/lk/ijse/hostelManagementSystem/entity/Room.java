@@ -16,10 +16,18 @@ public class Room {
     @Column(length = 20)
     private String rId;
     private String type;
-    private double keyMoney;
-    private int qty;
+    private String keyMoney;
+    private String qty;
 
     @OneToMany(cascade = CascadeType.ALL , mappedBy = "room")
     private List<Reservation> reservationList;
+
+    public Room(String rId, String type,String keyMoney, String qty ) {
+        this.rId = rId;
+        this.type = type;
+        this.keyMoney = keyMoney;
+        this.qty = qty;
+    }
+
 
 }
