@@ -22,15 +22,17 @@ public class RoomRepository {
 
 
     public boolean addRoom(Room room) {
-        transaction = session.beginTransaction();
+        Session session= SessionFactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
         try {
             session.save(room);
             transaction.commit();
-            session.close();
             return true;
         }catch (Exception e){
             transaction.rollback();
             e.printStackTrace();
+        }finally {
+            session.close();
         }
         return false;
 
@@ -86,5 +88,24 @@ public class RoomRepository {
         }
 
         return null;
+    }
+
+    public boolean deleteRoom(Object room) {
+        Transaction transaction = null;
+        boolean deleted = false;
+        try {
+            transaction = session.beginTransaction();
+            session.delete(room);
+            transaction.commit();
+            deleted = true;
+        } catch (HibernateException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return deleted;
     }
 }

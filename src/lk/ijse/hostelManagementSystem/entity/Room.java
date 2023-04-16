@@ -17,12 +17,12 @@ public class Room {
     private String rId;
     private String type;
     private String keyMoney;
-    private String qty;
+    private int qty;
 
     @OneToMany(cascade = CascadeType.ALL , mappedBy = "room")
     private List<Reservation> reservationList;
 
-    public Room(String rId, String type,String keyMoney, String qty ) {
+    public Room(String rId, String type,String keyMoney, int qty ) {
         this.rId = rId;
         this.type = type;
         this.keyMoney = keyMoney;

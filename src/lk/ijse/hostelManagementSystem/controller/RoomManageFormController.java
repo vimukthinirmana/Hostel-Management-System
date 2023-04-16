@@ -41,7 +41,6 @@ public class RoomManageFormController  implements Initializable {
         initUI();
         initialize();
         loadAllDate();
-
     }
 
     private void initUI() {
@@ -80,7 +79,7 @@ public class RoomManageFormController  implements Initializable {
             String rId = lblRoomID.getText();
             String type = txtRoomType.getText();
             String keyMoney = txtKeyMoney.getText();
-            String qty = txtQty.getText();
+            int qty = Integer.parseInt(txtQty.getText());
 
 
 
@@ -119,6 +118,8 @@ public class RoomManageFormController  implements Initializable {
     }
 
     public void addRoomBtnOnAction(ActionEvent actionEvent) {
+        txtRoomType.requestFocus();
+
         lblRoomID.setDisable(false);
         txtRoomType.setDisable(false);
         txtQty.setDisable(false);
@@ -140,6 +141,17 @@ public class RoomManageFormController  implements Initializable {
     }
 
     public void deleteBtnOnAction(ActionEvent actionEvent) {
+        Object selectedRoom = roomTableView.getSelectionModel().getSelectedItem();
+        if (selectedRoom != null) {
+            boolean deleted = roomRepository.deleteRoom(selectedRoom);
+            if (deleted) {
+                roomTableView.getItems().remove(selectedRoom);
+            } else {
+                new Alert(Alert.AlertType.ERROR, "not deleted").show();
+            }
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Select error").show();
+        }
     }
 
     public void updateBtnOnAction(ActionEvent actionEvent) {
