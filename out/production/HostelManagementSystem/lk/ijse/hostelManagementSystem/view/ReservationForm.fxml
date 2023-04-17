@@ -2,107 +2,143 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
-<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="640.0" prefWidth="1224.0" style="-fx-background-color: #e7e7e7;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hostelManagementSystem.controller.ReservationFormController">
    <children>
-      <JFXButton layoutX="19.0" layoutY="4.0" onAction="#newReserveBtnOnAction" prefHeight="27.0" prefWidth="101.0" style="-fx-background-color: blue; -fx-background-radius: 20;" text="+ Reseive" textFill="WHITE">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="645.0" layoutX="15.0" layoutY="5.0" stroke="BLACK" strokeType="INSIDE" width="1228.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#0387ff" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <JFXButton fx:id="newReservationBtnID" buttonType="RAISED" layoutX="18.0" layoutY="4.0" minHeight="0.0" onAction="#newReserveBtnOnAction" prefHeight="35.0" prefWidth="140.0" ripplerFill="WHITE" style="-fx-background-color: blue; -fx-background-radius: 20;" text="New Reservation" textFill="WHITE" AnchorPane.topAnchor="4.0">
          <font>
-            <Font size="18.0" />
+            <Font size="15.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
-      <JFXButton layoutX="144.0" layoutY="4.0" minHeight="30.0" onAction="#canselBtnOnAction" style="-fx-background-color: red; -fx-background-radius: 20;" text="Cansel" textFill="WHITE">
+      <JFXButton fx:id="canselBtnID" buttonType="RAISED" layoutX="182.0" layoutY="4.0" minHeight="0.0" onAction="#canselBtnOnAction" prefHeight="35.0" prefWidth="80.0" ripplerFill="WHITE" style="-fx-background-color: red; -fx-background-radius: 20;" text="Cansel" textFill="WHITE" AnchorPane.topAnchor="4.0">
          <font>
-            <Font size="18.0" />
+            <Font size="15.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
-      <Pane layoutX="19.0" layoutY="52.0" prefHeight="564.0" prefWidth="600.0" style="-fx-background-color: white;">
+      <Pane layoutX="18.0" layoutY="52.0" prefHeight="564.0" prefWidth="610.0" style="-fx-background-color: white;">
          <children>
-            <Label layoutX="3.0" layoutY="-1.0" prefHeight="39.0" prefWidth="126.0" text="Reservation ID :">
+            <Label layoutX="4.0" layoutY="-1.0" prefHeight="35.0" prefWidth="126.0" text="Reservation ID :">
                <font>
-                  <Font size="18.0" />
+                  <Font size="15.0" />
                </font>
             </Label>
-            <JFXComboBox fx:id="studentID" layoutX="5.0" layoutY="45.0" onAction="#cbxStudentIdOnAction" prefHeight="25.0" prefWidth="110.0" promptText="student ID" />
-            <JFXComboBox fx:id="roomType" layoutX="8.0" layoutY="91.0" onAction="#cbxRoomTypeOnAction" prefHeight="25.0" prefWidth="110.0" promptText="Room Type" />
-            <CheckBox fx:id="cbxStatus" layoutX="283.0" layoutY="8.0" mnemonicParsing="false" onAction="#cbxStatusOnAction" text="Key money">
+            <JFXComboBox fx:id="cmbStudentID" layoutX="6.0" layoutY="45.0" prefHeight="30.0" prefWidth="110.0" promptText="student ID" />
+            <JFXComboBox fx:id="cmbRoomType" layoutX="9.0" layoutY="91.0" prefHeight="30.0" prefWidth="110.0" promptText="Room Type" />
+            <JFXButton fx:id="reserveBtnID" buttonType="RAISED" layoutX="439.0" layoutY="146.0" minHeight="25.0" onAction="#reserveBtnOnAction" prefHeight="35.0" prefWidth="74.0" style="-fx-background-color: green; -fx-background-radius: 20;" text="Reseve" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
-            </CheckBox>
-            <JFXButton layoutX="411.0" layoutY="36.0" minHeight="25.0" onAction="#reserveBtnOnAction" prefHeight="37.0" prefWidth="74.0" style="-fx-background-color: green; -fx-background-radius: 10;" text="Reseve" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
+               <ripplerFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="WHITE" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </ripplerFill>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
-            <JFXButton layoutX="412.0" layoutY="79.0" minHeight="25.0" onAction="#clearBtnOnAction" prefHeight="37.0" prefWidth="74.0" style="-fx-background-color: red; -fx-background-radius: 10;" text="Clear" textFill="WHITE">
+            <JFXButton fx:id="clearBtnID" buttonType="RAISED" layoutX="521.0" layoutY="146.0" minHeight="25.0" onAction="#clearBtnOnAction" prefHeight="35.0" prefWidth="74.0" style="-fx-background-color: red; -fx-background-radius: 20;" text="Clear" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
+               <ripplerFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="WHITE" />
+                        <Stop color="#f4f4f5" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </ripplerFill>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
-            <TableView fx:id="reservationDetailsTable" layoutX="8.0" layoutY="189.0" prefHeight="368.0" prefWidth="586.0">
+            <TableView fx:id="reservationDetailsTable" layoutX="5.0" layoutY="227.0" prefHeight="330.0" prefWidth="600.0">
               <columns>
-                <TableColumn fx:id="colReserveId" prefWidth="127.0" text="Reserve ID" />
+                <TableColumn fx:id="colReserveId" prefWidth="107.0" text="Reserve ID" />
                 <TableColumn fx:id="colStudentId" prefWidth="127.0" text="Student ID" />
-                  <TableColumn fx:id="colDate" prefWidth="117.0" text="Date" />
-                  <TableColumn fx:id="colRoomType" prefWidth="121.0" text="Room type" />
-                  <TableColumn fx:id="colStatus" prefWidth="93.0" text="Status" />
+                  <TableColumn fx:id="colDate" prefWidth="125.0" text="Date" />
+                  <TableColumn fx:id="colRoomType" prefWidth="117.0" text="Room type" />
+                  <TableColumn fx:id="colStatus" prefWidth="123.0" text="Status" />
               </columns>
             </TableView>
-            <Label layoutX="208.0" layoutY="144.0" prefHeight="39.0" prefWidth="160.0" text="Reservation Details">
+            <Label layoutX="208.0" layoutY="181.0" prefHeight="39.0" prefWidth="160.0" text="Reservation Details">
                <font>
                   <Font name="System Italic" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="txtReservationId" layoutX="133.0" layoutY="11.0" />
-            <Label layoutX="149.0" layoutY="49.0" prefHeight="25.0" prefWidth="65.0" text="Name :">
+            <Label layoutX="215.0" layoutY="49.0" prefHeight="35.0" prefWidth="55.0" text="Name :">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="149.0" layoutY="89.0" prefHeight="25.0" prefWidth="65.0" text="Qty :">
+            <Label layoutX="184.0" layoutY="91.0" prefHeight="35.0" prefWidth="87.0" text="Rooms Qty :">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="lblName" layoutX="223.0" layoutY="49.0" prefHeight="25.0" prefWidth="136.0">
+            <Label fx:id="lblName" layoutX="274.0" layoutY="57.0" prefHeight="25.0" prefWidth="136.0">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="lblQty" layoutX="223.0" layoutY="86.0" prefHeight="25.0" prefWidth="136.0">
+            <Label fx:id="lblReservationID" layoutX="116.0" layoutY="5.0" prefHeight="25.0" prefWidth="136.0">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="lblReservationID" layoutX="129.0" layoutY="7.0" prefHeight="25.0" prefWidth="136.0">
+            <Label fx:id="lblRoomQty" layoutX="289.0" layoutY="96.0" prefHeight="25.0" prefWidth="80.0">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
+            <JFXComboBox fx:id="cmbStatusID" layoutX="9.0" layoutY="141.0" prefHeight="30.0" prefWidth="125.0" promptText="KeyMoney(Status)" />
          </children>
       </Pane>
-      <Pane layoutX="640.0" layoutY="52.0" prefHeight="564.0" prefWidth="568.0" style="-fx-background-color: white;">
+      <Pane layoutX="642.0" layoutY="52.0" prefHeight="564.0" prefWidth="568.0" style="-fx-background-color: white;">
          <children>
             <Label layoutX="171.0" layoutY="-2.0" prefHeight="39.0" prefWidth="198.0" text="Key payment Pandin List">
                <font>
                   <Font name="System Italic" size="18.0" />
                </font>
             </Label>
-            <TableView fx:id="keyMoneyPendinListTable" layoutX="10.0" layoutY="44.0" prefHeight="514.0" prefWidth="548.0">
+            <TableView fx:id="keyMoneyPendinListTable" layoutX="4.0" layoutY="44.0" prefHeight="514.0" prefWidth="560.0">
               <columns>
                 <TableColumn fx:id="kmResiveID" prefWidth="75.0" text="Reserve ID" />
                 <TableColumn fx:id="kmRoomID" prefWidth="93.0" text="Room ID" />
                   <TableColumn fx:id="kmStudentID" prefWidth="97.0" text="Student ID" />
                   <TableColumn fx:id="kmStudentName" prefWidth="85.0" text="Name" />
                   <TableColumn fx:id="kmContact" prefWidth="99.0" text="Contact" />
-                  <TableColumn fx:id="kmDate" prefWidth="98.0" text="Date" />
+                  <TableColumn fx:id="kmDate" prefWidth="110.0" text="Date" />
               </columns>
             </TableView>
          </children>

@@ -64,7 +64,6 @@ public class StudentManageFormController implements Initializable {
         canselBtnId.setDisable(true);
         clearBtnId.setDisable(true);
 
-
     }
 
     public void saveBtnOnAction(ActionEvent actionEvent) {

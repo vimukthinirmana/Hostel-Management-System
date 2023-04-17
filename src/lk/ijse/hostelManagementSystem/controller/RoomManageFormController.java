@@ -155,6 +155,44 @@ public class RoomManageFormController  implements Initializable {
     }
 
     public void updateBtnOnAction(ActionEvent actionEvent) {
+        boolean isValidate = checkValidation();
+        if (isValidate) {
+
+
+            String rId = lblRoomID.getText();
+            String type = txtRoomType.getText();
+            String keyMoney = txtKeyMoney.getText();
+            int qty = Integer.parseInt(txtQty.getText());
+
+
+
+            try {
+                boolean isUpdated = roomRepository.updateRoom(
+                        new Room(
+                                rId,
+                                type,
+                                keyMoney,
+                                qty
+                        )
+                );
+
+                if (isUpdated) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Room Updated!").show();
+                    clearFiled();
+                    loadAllDate();
+
+                } else {
+                    new Alert(Alert.AlertType.WARNING, "Something happened!").show();
+                }
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+
+
+        } else {
+            new Alert(Alert.AlertType.WARNING, "please check your details").show();
+
+        }
     }
 
 

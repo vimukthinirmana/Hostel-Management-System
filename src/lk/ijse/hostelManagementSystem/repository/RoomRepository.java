@@ -91,10 +91,10 @@ public class RoomRepository {
     }
 
     public boolean deleteRoom(Object room) {
-        Transaction transaction = null;
+
+        Transaction transaction = session.beginTransaction();
         boolean deleted = false;
         try {
-            transaction = session.beginTransaction();
             session.delete(room);
             transaction.commit();
             deleted = true;
@@ -107,5 +107,21 @@ public class RoomRepository {
             session.close();
         }
         return deleted;
+    }
+
+    public boolean updateRoom(Room room) {
+        Session session3= SessionFactoryConfiguration.getInstance().getSession();
+        Transaction transaction3 = session3.beginTransaction();
+        try {
+            session3.update(room);
+            transaction3.commit();
+            return true;
+        }catch (Exception e){
+            transaction3.rollback();
+            e.printStackTrace();
+        }finally {
+            session3.close();
+        }
+        return false;
     }
 }
