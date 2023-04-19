@@ -196,7 +196,7 @@ public class RoomRepository {
         try {
             Session session = SessionFactoryConfiguration.getInstance().getSession();
             transaction = session.beginTransaction();
-            session.save(room);
+            session.update(room);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null && transaction.isActive()) {

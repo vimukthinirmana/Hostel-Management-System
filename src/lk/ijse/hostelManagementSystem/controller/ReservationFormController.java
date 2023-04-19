@@ -135,7 +135,8 @@ public class ReservationFormController implements Initializable {
                 int currentQty = room.getQty();
                 if (currentQty > 0) {
                     room.setQty(currentQty - 1);
-                    roomRepository.updateRoom(room);
+//                    roomRepository.updateRoom(room);
+                    roomRepository.saveRoom(room);
                 } else {
                     // Handle case where room quantity is already 0
                     System.out.println("No available rooms");

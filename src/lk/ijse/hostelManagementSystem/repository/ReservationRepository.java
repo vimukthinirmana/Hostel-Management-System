@@ -71,12 +71,12 @@ public class ReservationRepository {
 
 
     public boolean saveReservation(Reservation reservation) {
-
-        Transaction transaction = null;
+        Session session= SessionFactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
         try {
-            transaction = session.beginTransaction();
             session.save(reservation);
             transaction.commit();
+            return true;
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
