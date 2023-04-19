@@ -19,21 +19,21 @@ public class ReservationRepository {
 
 
     public String generateReservationId() {
-        Session session2= SessionFactoryConfiguration.getInstance().getSession();
-        Transaction transaction2 = null;
+        Session session= SessionFactoryConfiguration.getInstance().getSession();
+        Transaction transaction = null;
         String reservationId = "Res-001"; // Default value for the first reservation Id
         try {
-            transaction2 = session2.beginTransaction();
+            transaction = session.beginTransaction();
 
             // Check if Reservation table is empty
-            Criteria criteria = session2.createCriteria(Reservation.class);
+            Criteria criteria = session.createCriteria(Reservation.class);
             criteria.setProjection(Projections.rowCount());
             Long rowCount = (Long) criteria.uniqueResult();
 
             // If the Reservation table is not empty, generate the next reservation Id
             if (rowCount > 0) {
                 // Find the last Student ID from the Student table
-                criteria = session2.createCriteria(Reservation.class);
+                criteria = session.createCriteria(Reservation.class);
                 criteria.setProjection(Projections.max("id"));
                 String lastReservationId = (String) criteria.uniqueResult();
 
@@ -42,12 +42,12 @@ public class ReservationRepository {
                 reservationId = "Res-" + String.format("%03d", nextReservationId);
             }
 
-            transaction2.commit();
+            transaction.commit();
         } catch (HibernateException e) {
-            if (transaction2 != null) transaction2.rollback();
+            if (transaction != null) transaction.rollback();
             e.printStackTrace();
         } finally {
-            session2.close();
+            session.close();
         }
         return reservationId;
     }
@@ -72,7 +72,7 @@ public class ReservationRepository {
 
     public boolean saveReservation(Reservation reservation) {
         Session session= SessionFactoryConfiguration.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
+       transaction = session.beginTransaction();
         try {
             session.save(reservation);
             transaction.commit();

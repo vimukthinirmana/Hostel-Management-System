@@ -1,6 +1,6 @@
 package lk.ijse.hostelManagementSystem.repository;
 
-import lk.ijse.hostelManagementSystem.entity.Room;
+
 import lk.ijse.hostelManagementSystem.entity.Student;
 import lk.ijse.hostelManagementSystem.util.SessionFactoryConfiguration;
 import lombok.NoArgsConstructor;
@@ -20,6 +20,7 @@ public class StudentRepository {
     private Transaction transaction;
 
     public boolean addStudent(Student student){
+        Session session= SessionFactoryConfiguration.getInstance().getSession();
         transaction = session.beginTransaction();
         try {
             session.save(student);
@@ -37,6 +38,7 @@ public class StudentRepository {
         Transaction transaction = null;
         boolean deleted = false;
         try {
+            Session session= SessionFactoryConfiguration.getInstance().getSession();
             transaction = session.beginTransaction();
             session.delete(student);
             transaction.commit();
@@ -143,6 +145,7 @@ public Student getStudentById(String studentId) {
 
         // Commit transaction
         session.getTransaction().commit();
+        session.close();//<-
 
         return student;
     } catch (Exception e) {

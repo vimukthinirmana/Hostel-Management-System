@@ -183,9 +183,12 @@ public class RoomRepository {
             session.beginTransaction();
             Room room = session.get(Room.class,roomId);
             session.getTransaction().commit();
+            session.close();//
             return room;
         } catch (Exception e) {
             throw new RuntimeException("Failed to get room by ID: " + e.getMessage(), e);
+        }finally {
+//            session.close();//
         }
     }
 
@@ -198,6 +201,7 @@ public class RoomRepository {
             transaction = session.beginTransaction();
             session.update(room);
             transaction.commit();
+            session.close();
         } catch (Exception e) {
             if (transaction != null && transaction.isActive()) {
                 transaction.rollback();

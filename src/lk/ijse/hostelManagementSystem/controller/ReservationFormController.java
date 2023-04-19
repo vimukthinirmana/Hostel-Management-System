@@ -6,7 +6,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.hostelManagementSystem.entity.Reservation;
 import lk.ijse.hostelManagementSystem.entity.Room;
@@ -17,6 +20,7 @@ import lk.ijse.hostelManagementSystem.repository.StudentRepository;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -49,18 +53,19 @@ public class ReservationFormController implements Initializable {
     public JFXButton clearBtnID;
     public Label lblRoomQty;
 
-    public JFXComboBox <String> cmbStudentID;
-    public JFXComboBox <String> cmbRoomType;
-    public JFXComboBox <String> cmbStatusID;
+    public JFXComboBox<String> cmbStudentID;
+    public JFXComboBox<String> cmbRoomType;
+    public JFXComboBox<String> cmbStatusID;
     public Label lblRoomId;
     public Label lblDate;
     public TableColumn colRoomId;
+
+    LocalDateTime now = LocalDateTime.now();
 
     private StudentRepository studentRepository = new StudentRepository();
     private RoomRepository roomRepository = new RoomRepository();
     private ReservationRepository reservationRepository = new ReservationRepository();
 
-//    private Date localDate;
 
     public void initialize() {
         initUI();
@@ -111,13 +116,14 @@ public class ReservationFormController implements Initializable {
     }
 
 
-
     public void reserveBtnOnAction(ActionEvent actionEvent) {
+
         String resId = lblReservationID.getText();
-        Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+        Date date =  java.sql.Timestamp.valueOf(now);
         String status = cmbStatusID.getSelectionModel().getSelectedItem();
         Student student = studentRepository.getStudentById(cmbStudentID.getSelectionModel().getSelectedItem());
         Room room = roomRepository.getRoomById(lblRoomId.getText());
+
 
         try {
             boolean isAdded = reservationRepository.saveReservation(
@@ -125,8 +131,8 @@ public class ReservationFormController implements Initializable {
                             resId,
                             date,
                             status,
-                            room,
-                            student
+                            student,
+                            room
                     )
             );
             if (isAdded) {
@@ -137,22 +143,23 @@ public class ReservationFormController implements Initializable {
                     room.setQty(currentQty - 1);
 //                    roomRepository.updateRoom(room);
                     roomRepository.saveRoom(room);
+                    clearFiled();
                 } else {
                     // Handle case where room quantity is already 0
-                    System.out.println("No available rooms");
+                    new Alert(Alert.AlertType.WARNING, "No available rooms").show();
                     return;
                 }
 
             } else {
-                new Alert(Alert.AlertType.WARNING, "Something happened!").show();
+                new Alert(Alert.AlertType.ERROR, "Something happened!").show();
             }
 
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
-    }
 
+    }
 
 
     public void clearBtnOnAction(ActionEvent actionEvent) {
@@ -199,7 +206,7 @@ public class ReservationFormController implements Initializable {
                     Student selectedStudent = studentRepository.getStudentById(selectedId);
 
                     if (selectedStudent != null) {
-                        lblName.setText( selectedStudent.getName());
+                        lblName.setText(selectedStudent.getName());
                     }
                 }
             });
@@ -246,27 +253,21 @@ public class ReservationFormController implements Initializable {
     }
 
 
-
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         colReserveId.setCellValueFactory(new PropertyValueFactory<>("resId"));
-        colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
-        colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
         colStudentId.setCellValueFactory(new PropertyValueFactory<>("student"));
         colRoomId.setCellValueFactory(new PropertyValueFactory<>("room"));
+        colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+        colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
 
-        // Load data from the selected row into the labels, text fields, and combo box
-        reservationDetailsTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-
-        });
         setCmbStatus();
         loadStudentIds();
         loadRoomTypes();
         loadAllDate();
     }
 
-    private void loadAllDate(){
+    private void loadAllDate() {
         ArrayList<Reservation>  reservations = (ArrayList<Reservation>) reservationRepository.getAll();
 
         ObservableList observableList= FXCollections.observableArrayList(reservations);

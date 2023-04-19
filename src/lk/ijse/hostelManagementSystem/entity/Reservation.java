@@ -21,18 +21,19 @@ public class Reservation {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "student_Id",nullable = false)
-    private Room room;
+    private Student student;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "room_Id",nullable = false)
-    private Student student;
+    private Room room;
 
-    public Reservation(String resId, Date date, String status, Room room, Student student) {
+
+    public Reservation(String resId, Date date, String status, Student student, Room room ) {
         this.resId = resId;
         this.date = date;
         this.status = status;
-        this.room = room;
         this.student = student;
+        this.room = room;
     }
 
 
