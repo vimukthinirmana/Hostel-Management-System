@@ -1,5 +1,6 @@
 package lk.ijse.hostelManagementSystem.repository;
 
+import lk.ijse.hostelManagementSystem.entity.Room;
 import lk.ijse.hostelManagementSystem.entity.Student;
 import lk.ijse.hostelManagementSystem.util.SessionFactoryConfiguration;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Projections;
+import org.hibernate.query.Query;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -117,4 +119,43 @@ public class StudentRepository {
         }
         return false;
     }
+
+
+    public List<String> getIds(){
+        String hql = "SELECT sId from Student";
+        Query<String> query = session.createQuery(hql);
+        List<String> results = query.list();
+        return results;
+    }
+
+
+public Student getStudentById(String studentId) {
+    // Replace with your actual logic to retrieve a student by ID from the database
+    // You can use Hibernate or any other ORM tool to perform the database query
+
+    // Example implementation using Hibernate
+    try (Session session = SessionFactoryConfiguration.getInstance().getSession()) {
+        // Begin transaction
+        session.beginTransaction();
+
+        // Retrieve student by ID
+        Student student = session.get(Student.class, studentId);
+
+        // Commit transaction
+        session.getTransaction().commit();
+
+        return student;
+    } catch (Exception e) {
+        throw new RuntimeException("Failed to retrieve student by ID: " + studentId, e);
+    }
+
+}
+
+
+
+
+
+
+
+
 }

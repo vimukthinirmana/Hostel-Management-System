@@ -1,7 +1,6 @@
 package lk.ijse.hostelManagementSystem.repository;
 
 import lk.ijse.hostelManagementSystem.entity.Reservation;
-import lk.ijse.hostelManagementSystem.entity.Student;
 import lk.ijse.hostelManagementSystem.util.SessionFactoryConfiguration;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
@@ -9,11 +8,13 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Projections;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import java.util.List;
+
 public class ReservationRepository {
     private Session session= SessionFactoryConfiguration.getInstance().getSession();
     private Transaction transaction;
-
-
 
 
 
@@ -50,5 +51,44 @@ public class ReservationRepository {
         }
         return reservationId;
     }
+
+
+
+    public List<Reservation> getAll(){
+        try{
+            CriteriaBuilder builder = session.getCriteriaBuilder();
+            CriteriaQuery<Reservation> reservationCriteriaQuery = builder.createQuery(Reservation.class);
+            reservationCriteriaQuery.from(Reservation.class);
+
+            return session.createQuery(reservationCriteriaQuery).getResultList();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+
+    public boolean saveReservation(Reservation reservation) {
+
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            session.save(reservation);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return false;
+    }
+
+
 
 }

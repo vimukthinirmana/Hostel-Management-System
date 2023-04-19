@@ -48,12 +48,9 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <JFXComboBox fx:id="cmbStudentID" layoutX="6.0" layoutY="45.0" prefHeight="30.0" prefWidth="110.0" promptText="student ID" />
-            <JFXComboBox fx:id="cmbRoomType" layoutX="9.0" layoutY="91.0" prefHeight="30.0" prefWidth="110.0" promptText="Room Type" />
-            <JFXButton fx:id="reserveBtnID" buttonType="RAISED" layoutX="439.0" layoutY="146.0" minHeight="25.0" onAction="#reserveBtnOnAction" prefHeight="35.0" prefWidth="74.0" style="-fx-background-color: green; -fx-background-radius: 20;" text="Reseve" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
+            <JFXComboBox fx:id="cmbStudentID" layoutX="6.0" layoutY="45.0" prefHeight="30.0" prefWidth="140.0" promptText="student ID" />
+            <JFXComboBox fx:id="cmbRoomType" layoutX="9.0" layoutY="91.0" prefHeight="30.0" prefWidth="140.0" promptText="Room Type" />
+            <JFXButton fx:id="reserveBtnID" buttonType="RAISED" layoutX="443.0" layoutY="146.0" minHeight="25.0" onAction="#reserveBtnOnAction" prefHeight="30.0" prefWidth="70.0" style="-fx-background-color: green; -fx-background-radius: 20;" text="Reseve" textFill="WHITE">
                <ripplerFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -66,10 +63,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <JFXButton fx:id="clearBtnID" buttonType="RAISED" layoutX="521.0" layoutY="146.0" minHeight="25.0" onAction="#clearBtnOnAction" prefHeight="35.0" prefWidth="74.0" style="-fx-background-color: red; -fx-background-radius: 20;" text="Clear" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
+            <JFXButton fx:id="clearBtnID" buttonType="RAISED" layoutX="521.0" layoutY="146.0" minHeight="25.0" onAction="#clearBtnOnAction" prefHeight="30.0" prefWidth="70.0" style="-fx-background-color: red; -fx-background-radius: 20;" text="Clear" textFill="WHITE">
                <ripplerFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -86,7 +80,7 @@
               <columns>
                 <TableColumn fx:id="colReserveId" prefWidth="107.0" text="Reserve ID" />
                 <TableColumn fx:id="colStudentId" prefWidth="127.0" text="Student ID" />
-                  <TableColumn fx:id="colRoomType" prefWidth="117.0" text="Room type" />
+                  <TableColumn fx:id="colRoomId" prefWidth="117.0" text="Room ID" />
                   <TableColumn fx:id="colDate" prefWidth="125.0" text="Date" />
                   <TableColumn fx:id="colStatus" prefWidth="123.0" text="Status" />
               </columns>
@@ -96,17 +90,17 @@
                   <Font name="System Italic" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="215.0" layoutY="49.0" prefHeight="35.0" prefWidth="55.0" text="Name :">
+            <Label layoutX="196.0" layoutY="45.0" prefHeight="35.0" prefWidth="55.0" text="Name :">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="184.0" layoutY="91.0" prefHeight="35.0" prefWidth="87.0" text="Rooms Qty :">
+            <Label layoutX="376.0" layoutY="91.0" prefHeight="35.0" prefWidth="87.0" text="Rooms Qty :">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="lblName" layoutX="274.0" layoutY="57.0" prefHeight="25.0" prefWidth="136.0">
+            <Label fx:id="lblName" layoutX="255.0" layoutY="51.0" prefHeight="25.0" prefWidth="136.0" textFill="#610cff">
                <font>
                   <Font size="15.0" />
                </font>
@@ -116,12 +110,27 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="lblRoomQty" layoutX="289.0" layoutY="96.0" prefHeight="25.0" prefWidth="80.0">
+            <Label fx:id="lblRoomQty" layoutX="481.0" layoutY="96.0" prefHeight="25.0" prefWidth="65.0" textFill="#1a06f8">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <JFXComboBox fx:id="cmbStatusID" layoutX="9.0" layoutY="141.0" prefHeight="30.0" prefWidth="125.0" promptText="KeyMoney(Status)" />
+            <JFXComboBox fx:id="cmbStatusID" layoutX="9.0" layoutY="141.0" prefHeight="30.0" prefWidth="140.0" promptText="KeyMoney(Status)" />
+            <Label layoutX="176.0" layoutY="91.0" prefHeight="35.0" prefWidth="72.0" text="Room ID :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblRoomId" layoutX="253.0" layoutY="96.0" prefHeight="25.0" prefWidth="105.0" textFill="#7528f2">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblDate" layoutX="472.0" layoutY="2.0" prefHeight="25.0" prefWidth="136.0" textFill="#610cff">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Pane layoutX="642.0" layoutY="52.0" prefHeight="564.0" prefWidth="568.0" style="-fx-background-color: white;">

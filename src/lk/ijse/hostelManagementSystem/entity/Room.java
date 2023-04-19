@@ -13,10 +13,13 @@ import java.util.List;
 @Entity
 public class Room {
     @Id
-    @Column(length = 20)
+    @Column(length = 20,name = "room_Id")
     private String rId;
+    @Column(name = "type")
     private String type;
+    @Column(name = "keyMoney")
     private String keyMoney;
+    @Column(name = "qty")
     private int qty;
 
     @OneToMany(cascade = CascadeType.ALL , mappedBy = "room")

@@ -103,6 +103,7 @@ public class AuthenticationController {
 
     @FXML
     void signInBtn2Action(ActionEvent event) {
+        txtUserName.requestFocus();
         signupPane.setVisible(false);
         signinpaneID.setVisible(true);
         signupbtn2ID.setVisible(true);
@@ -156,6 +157,7 @@ public class AuthenticationController {
 
     @FXML
     void signupBtn2Action(ActionEvent event) {
+        txtName.requestFocus();
         clearFields();
         signupbtn2ID.setVisible(false);
         signinpaneID.setVisible(false);

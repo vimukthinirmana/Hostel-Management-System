@@ -9,16 +9,22 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Projections;
+import org.hibernate.query.Query;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import java.io.Serializable;
 import java.util.List;
 
-@NoArgsConstructor
+
 
 public class RoomRepository {
     private Session session= SessionFactoryConfiguration.getInstance().getSession();
     private Transaction transaction;
+
 
 
     public boolean addRoom(Room room) {
@@ -124,4 +130,83 @@ public class RoomRepository {
         }
         return false;
     }
+
+    public Room getRoomTypes(String type){
+        try{
+            return session.get(Room.class, type);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+    public List<String> getRoomTypes(){
+        String hql = "SELECT type from Room";
+        Query<String> query = session.createQuery(hql);
+        List<String> results = query.list();
+        return results;
+    }
+
+
+
+
+    public Room getRoomByType(String roomType) {
+        Room room = null;
+        Session session = null;
+        try {
+            session = SessionFactoryConfiguration.getInstance().getSession();
+            session.beginTransaction();
+            Query<Room> query = session.createQuery("FROM Room WHERE type = :roomType", Room.class);
+            query.setParameter("roomType", roomType);
+            room = query.uniqueResult();
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            if (session != null && session.getTransaction() != null) {
+                session.getTransaction().rollback();
+            }
+            throw new RuntimeException("Failed to get room by type: " + e.getMessage(), e);
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return room;
+    }
+
+
+
+
+    public Room getRoomById(String roomId) {
+        try {
+            Session session = SessionFactoryConfiguration.getInstance().getSession();
+            session.beginTransaction();
+            Room room = session.get(Room.class,roomId);
+            session.getTransaction().commit();
+            return room;
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to get room by ID: " + e.getMessage(), e);
+        }
+    }
+
+
+
+    public void saveRoom(Room room) {
+        Transaction transaction = null;
+        try {
+            Session session = SessionFactoryConfiguration.getInstance().getSession();
+            transaction = session.beginTransaction();
+            session.save(room);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null && transaction.isActive()) {
+                transaction.rollback();
+            }
+            throw new RuntimeException("Failed to save room: " + e.getMessage(), e);
+        }
+    }
+
+
+
+
 }

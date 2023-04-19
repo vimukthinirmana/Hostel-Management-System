@@ -13,12 +13,17 @@ import java.util.List;
 @Entity
 public class Student {
     @Id
-    @Column(length = 20)
+    @Column(length = 20,name = "student_Id")
     private String sId;
+    @Column(name = "name")
     private String name;
+    @Column(name = "address")
     private String address;
+    @Column(name = "contactNo")
     private String contactNo;
+    @Column(name = "gender")
     private String gender;
+    @Column(name = "age")
     private String age;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "student")

@@ -15,8 +15,8 @@
             <Font name="Arial Rounded MT Bold" size="20.0" />
          </font>
       </Label>
-      <AnchorPane fx:id="mainPain" layoutX="126.0" layoutY="48.0" prefHeight="650.0" prefWidth="1224.0" style="-fx-background-color: white;" />
-      <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="135.0" onAction="#studentBtnOnAction" prefHeight="35.0" prefWidth="110.0" ripplerFill="WHITE" style="-fx-background-color: blue; -fx-background-radius: 20;" text="student" textFill="WHITE" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="1250.0">
+      <AnchorPane fx:id="mainPain" layoutX="127.0" layoutY="48.0" prefHeight="640.0" prefWidth="1224.0" style="-fx-background-color: white;" />
+      <JFXButton fx:id="studentBtnId" buttonType="RAISED" layoutX="10.0" layoutY="135.0" onAction="#studentBtnOnAction" prefHeight="35.0" prefWidth="110.0" ripplerFill="WHITE" style="-fx-background-color: blue; -fx-background-radius: 20;" text="student" textFill="WHITE" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="1250.0">
          <font>
             <Font size="18.0" />
          </font>

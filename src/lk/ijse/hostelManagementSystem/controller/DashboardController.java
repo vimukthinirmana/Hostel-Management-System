@@ -1,5 +1,6 @@
 package lk.ijse.hostelManagementSystem.controller;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -24,7 +25,7 @@ public class DashboardController {
     public AnchorPane mainPain;
     public Label dateTxt;
     public Label timeTxt;
-
+    public JFXButton studentBtnId;
 
 
     public void studentBtnOnAction(ActionEvent actionEvent) throws IOException {
@@ -41,7 +42,10 @@ public class DashboardController {
     }
 
     public void initialize(){
+        setDateAndTime();
+    }
 
+    public void setDateAndTime(){
         LocalDate date = LocalDate.now();
         dateTxt.setText(String.valueOf(date));
 
